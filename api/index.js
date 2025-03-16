@@ -8,6 +8,15 @@ const productRoute = require("./routes/product");
 const cartRoute = require("./routes/cart");
 const reviewRoute = require("./routes/review");
 const orderRoute = require("./routes/order");
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: "https://ecommerce-zc1w.vercel.app", // Change to your Vercel frontend URL
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 
 dotenv.config();
 const stripeRoute = require("./routes/stripe");

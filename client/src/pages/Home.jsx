@@ -8,7 +8,7 @@ import axios from "axios";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);
+  const products = useSelector((state) => state.products?.products || []);
   const currentUser = useSelector((state) => state.users.currentUser);
 
   const [avgScores, setAvgScores] = useState({});

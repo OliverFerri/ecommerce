@@ -28,7 +28,7 @@ const ProductInfo = () => {
   const productId = location.pathname.split("/")[2];
   const userId = useSelector((state) => state.users.currentUser?._id);
   const product = useSelector((state) =>
-    state.products.products.find((item) => item._id === productId)
+    state.products?.products.find((item) => item._id === productId)
   );
   const userCart = useSelector((state) => state.cart.carts);
 

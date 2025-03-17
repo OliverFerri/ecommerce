@@ -111,7 +111,7 @@ const Cart = () => {
             amount: totalWithTax.toFixed(2) * 100,
           }
         );
-        navigate(`${import.meta.env.VITE_BACKEND}/checkout/success`, {
+        navigate(`/checkout/success`, {
           state: res.data,
         });
       } catch (error) {

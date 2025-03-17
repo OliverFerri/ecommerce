@@ -8,6 +8,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), tailwindcss()],
+    build: {
+      sourcemap: true, // Enable source maps for debugging
+    },
     server: {
       proxy: {
         "/api": {

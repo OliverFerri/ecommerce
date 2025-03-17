@@ -66,11 +66,14 @@ const Navbar = () => {
     console.log("useEffect start: ", currentUser);
     const getNavbarUser = async () => {
       try {
-        const res = await axios.get(`/api/users/find/${currentUser._id}`, {
-          headers: {
-            token: "Bearer " + currentUser.accessToken,
-          },
-        });
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND}/api/users/find/${currentUser._id}`,
+          {
+            headers: {
+              token: "Bearer " + currentUser.accessToken,
+            },
+          }
+        );
         console.log("response: ", res.data);
         const userData = {
           ...res.data,
@@ -93,7 +96,9 @@ const Navbar = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get("/api/products");
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND}/api/products`
+        );
         setData(res.data);
       } catch (error) {
         console.log(error);

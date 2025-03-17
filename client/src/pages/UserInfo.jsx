@@ -26,11 +26,14 @@ const UserInfo = () => {
     console.log("user info start: ", currentUser);
     const getUpdatedUser = async () => {
       try {
-        const res = await axios.get(`/api/users/find/${currentUser._id}`, {
-          headers: {
-            token: "Bearer " + currentUser.accessToken,
-          },
-        });
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND}/api/users/find/${currentUser._id}`,
+          {
+            headers: {
+              token: "Bearer " + currentUser.accessToken,
+            },
+          }
+        );
         console.log("user info response: ", res.data);
         const userData = res.data;
         console.log("user info user data: ", userData);

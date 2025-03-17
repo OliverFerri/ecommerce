@@ -29,7 +29,9 @@ const Cart = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get("/api/products");
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND}/api/products`
+        );
 
         // Create a lookup map for quantities from cartProducts
         const cartMap = cartProducts.reduce((acc, item) => {
@@ -102,11 +104,16 @@ const Cart = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await axios.post("/api/checkout/payment", {
-          tokenId: stripeToken.id,
-          amount: totalWithTax.toFixed(2) * 100,
+        const res = await axios.post(
+          `${import.meta.env.VITE_BACKEND}/api/checkout/payment`,
+          {
+            tokenId: stripeToken.id,
+            amount: totalWithTax.toFixed(2) * 100,
+          }
+        );
+        navigate(`${import.meta.env.VITE_BACKEND}/checkout/success`, {
+          state: res.data,
         });
-        navigate("/checkout/success", { state: res.data });
       } catch (error) {
         console.log(error);
       }

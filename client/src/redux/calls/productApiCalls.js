@@ -5,7 +5,7 @@ import { getAllProducts } from "../slices/productSlice";
 export const getProducts = async (dispatch) => {
   dispatch(requestStart());
   try {
-    const res = await axios.get("/api/products");
+    const res = await axios.get(`${import.meta.env.VITE_BACKEND}/api/products`);
     dispatch(getAllProducts(res.data));
   } catch (error) {
     dispatch(requestFailure());

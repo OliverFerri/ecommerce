@@ -27,7 +27,9 @@ const Home = () => {
         const scores = {};
         for (const product of products) {
           const res = await axios.get(
-            `/api/reviews/average?pid=${product._id}`
+            `${import.meta.env.VITE_BACKEND}/api/reviews/average?pid=${
+              product._id
+            }`
           );
           scores[product._id] = res.data.averageScore;
         }

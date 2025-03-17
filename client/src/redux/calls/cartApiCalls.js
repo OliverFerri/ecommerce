@@ -10,7 +10,10 @@ import {
 export const addToCart = async (cart, dispatch) => {
   dispatch(requestStart());
   try {
-    const res = await axios.post("/api/cart", cart);
+    const res = await axios.post(
+      `${import.meta.env.VITE_BACKEND}/api/cart`,
+      cart
+    );
     dispatch(createCart(res.data));
   } catch (error) {
     dispatch(requestFailure());
@@ -22,7 +25,7 @@ export const addToCart = async (cart, dispatch) => {
 export const getCart = async (dispatch) => {
   dispatch(requestStart());
   try {
-    const res = await axios.get("/api/cart");
+    const res = await axios.get(`${import.meta.env.VITE_BACKEND}/api/cart`);
     dispatch(getAllCarts(res.data));
   } catch (error) {
     dispatch(requestFailure());
@@ -33,7 +36,9 @@ export const getCart = async (dispatch) => {
 export const getUserCart = async (userId, dispatch) => {
   dispatch(requestStart());
   try {
-    const res = await axios.get(`/api/cart/${userId}`);
+    const res = await axios.get(
+      `${import.meta.env.VITE_BACKEND}/api/cart/${userId}`
+    );
     dispatch(getUserCarts(res.data));
   } catch (error) {
     dispatch(requestFailure());
@@ -45,7 +50,10 @@ export const getUserCart = async (userId, dispatch) => {
 export const updateCart = async (id, cart, dispatch) => {
   dispatch(requestStart());
   try {
-    const updatedUser = await axios.put(`/api/cart/${id}`, cart);
+    const updatedUser = await axios.put(
+      `${import.meta.env.VITE_BACKEND}/api/cart/${id}`,
+      cart
+    );
     console.log("updated user: ", updatedUser);
     dispatch(updateCartItem({ id, cart }));
   } catch (error) {

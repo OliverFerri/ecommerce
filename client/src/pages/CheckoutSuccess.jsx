@@ -27,7 +27,10 @@ const CheckoutSuccess = () => {
 
     const getOrder = async () => {
       try {
-        const res = await axios.post(`/api/orders`, newOrder);
+        const res = await axios.post(
+          `${import.meta.env.VITE_BACKEND}/api/orders`,
+          newOrder
+        );
         setOrderId(res.data._id);
       } catch (error) {
         console.log(error);
@@ -41,7 +44,9 @@ const CheckoutSuccess = () => {
 
     const clearCart = async () => {
       try {
-        await axios.delete(`/api/cart/${userId}`);
+        await axios.delete(
+          `${import.meta.env.VITE_BACKEND}/api/cart/${userId}`
+        );
       } catch (error) {
         console.log(error);
       }

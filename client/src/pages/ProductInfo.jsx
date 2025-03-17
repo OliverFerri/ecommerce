@@ -66,7 +66,9 @@ const ProductInfo = () => {
   useEffect(() => {
     const getReviews = async () => {
       try {
-        const res = await axios.get(`/api/reviews`);
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND}/api/reviews`
+        );
         setReviews(res.data.filter((item) => item.productId === productId));
       } catch (error) {
         console.log(error);
@@ -78,7 +80,9 @@ const ProductInfo = () => {
   useEffect(() => {
     const getReviewUsers = async () => {
       try {
-        const res = await axios.get(`/api/users`);
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND}/api/users`
+        );
 
         const filterUsers = reviews.map((item) => item.userId);
 
@@ -103,7 +107,9 @@ const ProductInfo = () => {
   useEffect(() => {
     const getAvg = async () => {
       try {
-        const res = await axios.get(`/api/reviews/average?pid=${productId}`);
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND}/api/reviews/average?pid=${productId}`
+        );
         setAvgScore(res.data.averageScore);
       } catch (error) {
         console.log(error);
@@ -131,7 +137,10 @@ const ProductInfo = () => {
       return;
     }
     try {
-      const res = await axios.post("/api/reviews", newReview);
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND}/api/reviews`,
+        newReview
+      );
       setReviews((prevReviews) => [...prevReviews, res.data]);
     } catch (error) {
       console.log(error);
@@ -141,7 +150,10 @@ const ProductInfo = () => {
   const handleSubmitEdit = async (e, id) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`/api/reviews/${id}`, editedReview);
+      const res = await axios.put(
+        `${import.meta.env.VITE_BACKEND}/api/reviews/${id}`,
+        editedReview
+      );
       setReviews((prevReviews) =>
         prevReviews.map((review) => (review.userId === id ? res.data : review))
       );

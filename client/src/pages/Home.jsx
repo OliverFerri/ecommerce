@@ -47,16 +47,20 @@ const Home = () => {
   return (
     <div className="flex justify-center w-[92%] m-auto p-5 h-[calc(100vh-4.5rem)] bg-[#141414] border-teal-900 border-r-1 border-l-1">
       <div className="grid sm:grid-cols-3 md:grid-cols-4 grid-cols-7">
-        {products.map((item) => (
-          <NavLink key={item._id} to={"/products/" + item._id}>
-            <ProductTile
-              title={item.title}
-              img={item.img}
-              price={item.price}
-              score={avgScores[item._id] || 0}
-            />
-          </NavLink>
-        ))}
+        {Array.isArray(products) && products.length > 0 ? (
+          products.map((item) => (
+            <NavLink key={item._id} to={"/products/" + item._id}>
+              <ProductTile
+                title={item.title}
+                img={item.img}
+                price={item.price}
+                score={avgScores[item._id] || 0}
+              />
+            </NavLink>
+          ))
+        ) : (
+          <div>Blah...</div>
+        )}
       </div>
     </div>
   );

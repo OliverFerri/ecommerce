@@ -157,7 +157,7 @@ const ProductInfo = () => {
       setReviews((prevReviews) =>
         prevReviews.map((review) => (review.userId === id ? res.data : review))
       );
-      console.log("data:", res.data);
+      // console.log("data:", res.data);
     } catch (error) {
       console.log(error);
     }

@@ -74,12 +74,12 @@ const Navbar = () => {
             },
           }
         );
-        console.log("response: ", res.data);
+        // console.log("response: ", res.data);
         const userData = {
           ...res.data,
           cartLength: cartLength ? cartLength : 0,
         };
-        console.log("userData: ", userData);
+        // console.log("userData: ", userData);
         setNavbarUser(userData);
       } catch (error) {
         console.log(error);
